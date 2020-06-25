@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>图书管理系统说明</title>
+		<style>
+			* {
+			    margin: 0;
+			    padding: 0;
+			}
+			
+			body {
+			    background-image: linear-gradient(to left, rgba(255, 0, 149, 0.2), rgba(0, 247, 255, 0.2)), url(./img/bg.jpg);
+			    background-repeat: no-repeat;
+			    background-attachment: fixed;
+			    background-size: cover;
+			}
+			
+			#box {
+			    width: 1200px;
+			    height: 100px;
+			    margin: 0 auto;
+			    padding-top: 5%;
+			}
+			
+			.meBox {
+			    float: left;
+			    width: 20rem;
+			    height: 25rem;
+			    background-color: white;
+			    margin-top: 100px;
+			    border-radius: 2%;
+			    transition: all 0.3s;
+			    text-align: center;
+			}
+			
+			.meBox:hover {
+			    width: 21rem;
+			    height: 26rem;
+			    margin: 95px 0 0 -5px;
+			    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+			}
+			
+			.headPhoto {
+			    width: 8rem;
+			    height: 8rem;
+			    background: url(图书管理系统.ico);
+			    background-size: cover;
+			    border-radius: 50%;
+			    position: relative;
+			    top: -15%;
+			    left: 50%;
+			    margin-left: -4rem;
+			    transition: all 0.3s;
+			}
+			
+			.meBox:hover .headPhoto {
+			    width: 9rem;
+			    height: 9rem;
+			    margin: -0.5rem 0 0 -4.5rem;
+			    transform: rotate(360deg);
+			}
+			
+			.headPhoto:hover {
+			    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			}
+			
+			.meBox-title {
+			    width: auto;
+			    margin: 0 auto;
+			}
+			
+			.meBox-title p {
+			    font-size: 1.2rem;
+			    border-right: .1em solid;
+			    width: 12ch;
+			    white-space: nowrap;
+			    overflow: hidden;
+			    animation: typing 2s steps(20, end), blink-caret .3s step-end infinite alternate;
+			    margin: -30px 0 0 90px;
+			    transition: all 0.3s;
+			}
+			
+			.meBox:hover .meBox-title p {
+			    font-size: 1.3rem;
+			}
+			
+			.meBox-title .fg {
+			    width: 80%;
+			    height: 2px;
+			    background-image: linear-gradient(to left, #3498db, #2980b9);
+			    margin: 5% 0 0 10%;
+			}
+			
+			.meBox-text {
+			    width: 80%;
+			    height: 45%;
+			    overflow: hidden;
+			    text-align: center;
+			    color: rgb(70, 70, 70);
+			    animation-name: meBox-text;
+			    animation-duration: 2s;
+			    animation-fill-mode: forwards;
+			    margin: 5% 0 0 10%;
+			    transition: all 0.3s;
+			}
+			
+			.meBox-text p {
+			    margin-top: 5px;
+			}
+			
+			.meBox:hover .meBox-text {
+			    font-size: 1.05rem;
+			}
+			
+			
+			
+			#cmdBox {
+			    width: 800px;
+			    height: 590px;
+			    float: right;
+			}
+			
+			.cmd {
+			    width: 650px;
+			    height: 400px;
+			    border-radius: 10px 10px 5px 5px;
+			    overflow: hidden;
+			    background-color: rgba(255, 255, 255, 0.9);
+			    transition: all 0.3s;
+			    color: rgb(88, 89, 92);
+			    position: relative;
+			    top: 0;
+			    left: 0;
+			}
+			
+			.cmd:hover {
+			    width: 660px;
+			    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+			    margin: -5px 0 0 -5px;
+			    z-index: 1;
+			}
+			.cmd2:hover{
+			    height: 600px;
+			}
+			
+			.cmd .title {
+			    width: 100%;
+			    height: 25px;
+			    background-image: linear-gradient(to top, rgb(184, 184, 184), white);
+			    font-size: 14px;
+			    line-height: 25px;
+			}
+			
+			.cmd .title span {
+			    display: inline-block;
+			    width: 70%;
+			    text-align: center;
+			}
+			
+			.cmd .click div {
+			    width: 10px;
+			    height: 10px;
+			    border-radius: 50%;
+			    margin: 8px 0 0 10px;
+			    float: left;
+			}
+			
+			.cmd .click .red {
+			    background-color: #ff1b22;
+			    box-shadow: 0 0 1px #ff1b22;
+			}
+			
+			.cmd .click .red:hover {
+			    background-color: #ff6268;
+			    box-shadow: 0 0 3px #ff1b22;
+			}
+			
+			.cmd .click .yellow {
+			    background-color: #ffaf00;
+			    box-shadow: 0 0 1px #ffaf00;
+			}
+			
+			.cmd .click .yellow:hover {
+			    background-color: #ffd373;
+			    box-shadow: 0 0 3px #ffaf00;
+			}
+			
+			.cmd .click .green {
+			    background-color: #00931a;
+			    box-shadow: 0 0 1px #00931a;
+			}
+			
+			.cmd .click .green:hover {
+			    background-color: rgb(0, 196, 36);
+			    box-shadow: 0 0 3px #00931a;
+			}
+			
+			.cmdText1 {
+			    padding-top: 11px;
+			    padding-left: 20px;
+					font-size: 18px;
+					line-height: 40px;
+			}
+			.cmdText2 {
+			    padding-top: 11px;
+			    padding-left: 20px;
+					padding-right: 20px;
+					font-size: 15px;
+					line-height: 30px;
+			}
+			
+			.cmd2 {
+			    position: relative;
+			    top: -460px;
+			    left: 200px;
+			}
+			
+			.cmd2 .cmdText .ul a:hover {
+			    color: rgb(0, 132, 255);
+			}
+			
+		</style>
+    <link rel="icon" href="./图书管理系统.ico">
+</head>
+
+<body>
+    <div id="box">
+        <!-- 个人资料卡片 -->
+        <div class="meBox">
+            <!-- 头像 -->
+            <div class="headPhoto"></div>
+            <!-- 介绍 -->
+            <div class="meBox-title">
+                <p>图书管理系统</p>
+                <div class="fg"></div>
+            </div>
+            <div class="meBox-text">
+                <p>类型：应用程序（.exe）</p>
+								<p>作者：本小组三位成员</p>
+                <p>大小：413KB（417400字节）</p>
+                <p>占用空间：414KB（417792字节）</p>
+            </div>
+        </div>
+
+        <!-- 伪终端介绍 -->
+        <div id="cmdBox">
+            <!-- 第一个终端 -->
+            <div class="cmd">
+                <!-- 三个按钮 -->
+                <div class="click">
+                    <div class="red"></div>
+                    <div class="yellow"></div>
+                    <div class="green"></div>
+                </div>
+                <!-- 顶部标题 -->
+                <div class="title">
+                    <span>关于本软件</span>
+                </div>
+                <!-- 终端内文字 -->
+                <div class="cmdText1">
+                    <p>
+											本软件为<b>浙江大学程序设计专题课（肖少拥）大程序作业</b>
+										</p>
+										<p>
+											由本小组三位成员共同开发
+										</p>
+										<p>
+											于<b>2020年5月1日</b>正式开始编写</p>
+                    </p>
+										<p>
+											<b>6月15日</b>完成最终版本
+										</p>
+                </div>
+            </div>
+            <!-- 第二个终端 -->
+            <div class="cmd cmd2">
+                <!-- 三个按钮 -->
+                <div class="click">
+                    <div class="red"></div>
+                    <div class="yellow"></div>
+                    <div class="green"></div>
+                </div>
+                <!-- 顶部标题 -->
+                <div class="title">
+                    <span>使用说明</span>
+                </div>
+                <!-- 终端内文字 -->
+                <div class="cmdText2">
+									<h3>
+										须知
+									</h3>
+                    <p>
+											用户需先进行登录后才可进行相关操作。如果您已经有自己的账户，请直接登录；如果您还没有账户，请先注册后登陆。管理员也需使用管理员账户进行登录，且管理员与普通用户的权限不同。登录和注册选项在用户菜单中。
+										</p>
+										<h3>
+											菜单的使用
+										</h3>
+										<p>
+											<b>
+												一、文件菜单：
+											</b>
+											    “打开”用于读取二进制文件中保存的图书、用户和借阅信息；“保存”用于将以上信息写入二进制文件。
+											点击“退出”，可以直接退出程序。
+										</p>
+										<p>
+											<b>
+												二、图书菜单：
+											</b>
+											包括新增、显示、修改、删除。
+											普通用户只可以使用显示功能，显示界面中，您可以查看全部图书的相关信息，或输入书号、书名、关键词、作者进行搜索。
+											管理员可以选择新增、修改、删除图书，若需减少图书库存请在“删除”中进行。
+										</p>
+										<p>
+											<b>
+												三、借还菜单：
+											</b>
+											登录后，您可以进行图书的借还，注意借书上限为10本。
+										</p>
+										<p>
+											<b>
+												四、用户菜单：
+											</b>
+											包括登录、注册、审核、修改、删除。 在这里，您可以进行登录和注册，登录后您可以修改您的用户信息或在“删除”中注销账户。
+											如果您需要查看自己的用户信息，请在“修改”中查看。
+											审核功能为管理员权限，管理员可以在此查看每一用户的信息，但无权删除用户。
+										</p>
+										<p>
+											<b>
+												五、帮助菜单：
+											</b>
+											“关于本软件”中，您可以查看本软件的基本信息。 “使用方法”中，您可以查看使用本软件的具体操作方法。
+										</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>
